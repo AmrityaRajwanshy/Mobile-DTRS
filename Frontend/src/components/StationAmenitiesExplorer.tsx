@@ -225,8 +225,8 @@ export const StationAmenitiesExplorer: React.FC<StationAmenitiesExplorerProps> =
             Verified Lodges, IRCTC Retiring Rooms, Executive Lounges &amp; Sanitized Restrooms near railway stations to stay comfortably during train delays.
           </p>
 
-          {/* Active Delay Advisory Banner */}
-          {isDelayed && (
+          {/* Active Delay Advisory Banner (Commented Out) */}
+          {/* {isDelayed && (
             <div className="mt-3 bg-white/15 border border-white/30 rounded-xl p-2.5 flex items-start gap-2.5 text-xs text-white">
               <AlertTriangle className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
               <div>
@@ -238,7 +238,7 @@ export const StationAmenitiesExplorer: React.FC<StationAmenitiesExplorerProps> =
                 </span>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
 

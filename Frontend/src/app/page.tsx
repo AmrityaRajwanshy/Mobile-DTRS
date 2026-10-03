@@ -344,12 +344,27 @@ export default function Home() {
         params.append('multi_station_injections', JSON.stringify(multiInj));
       }
 
+      const storedKey = typeof window !== 'undefined'
+        ? (localStorage.getItem('LIVE_API_KEY') || localStorage.getItem('RAILRADAR_API_KEY') || '')
+        : '';
+      if (storedKey) {
+        params.append('api_key', storedKey);
+      }
+      const liveHeaders: Record<string, string> = {};
+      if (storedKey) {
+        liveHeaders['x-api-key'] = storedKey;
+        liveHeaders['Authorization'] = `Bearer ${storedKey}`;
+      }
+
       const [resRailRadar, resTrainInfo] = await Promise.all([
-        fetch(`/api/railradar/auto_fetch_and_freeze?${params.toString()}`),
+        fetch(`/api/railradar/auto_fetch_and_freeze?${params.toString()}`, { headers: liveHeaders }),
         fetch(`/api/train_info?train_no=${encodeURIComponent(trainNo)}`)
       ]);
 
-      if (!resRailRadar.ok) throw new Error('Failed to fetch live telemetry');
+      if (!resRailRadar.ok) {
+        const errJson = await resRailRadar.json().catch(() => null);
+        throw new Error(errJson?.detail || errJson?.message || `Failed to fetch live telemetry (HTTP ${resRailRadar.status})`);
+      }
       const data: RailRadarMatchResponse = await resRailRadar.json();
 
       if (resTrainInfo.ok) {

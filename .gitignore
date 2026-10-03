@@ -25,6 +25,19 @@ ENV/
 .env.test.local
 .env.production.local
 
+# Embedded snapshot sub-repos / archive
+SPipelines/
+**/SPipelines/
+**/BlackSheep/
+BlackSheep2 - FRTD/
+*.json
+!**/Frontend/package.json
+!**/Frontend/package-lock.json
+!**/Frontend/tsconfig.json
+!**/Frontend/components.json
+!**/Frontend/vercel.json
+!vercel.json
+
 # Simulation runtime database changes (baseline WIN.db kept)
 WIN_SIMULATION.db
 

@@ -987,15 +987,20 @@ export const RailRadarTracker: React.FC<RailRadarTrackerProps> = ({
           {!raw.isLive && (
             <div className="p-3 bg-amber-50 border border-amber-300 rounded-lg text-amber-900 flex items-start gap-2.5">
               <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <div>
+              <div className="flex-1">
                 <div className="text-xs font-black uppercase tracking-wider text-amber-800">
                   No Live GPS Telemetry From Upstream API &bull; All Safety Cover Data Deleted
                 </div>
-                <div className="text-xs text-amber-900 font-semibold mt-0.5">
+                <div className="text-xs text-amber-900 font-semibold mt-1">
                   As configured, synthetic cover data has been purged. Displaying 0.0 mins delay, 0.0 km/h speed, and 0% segment progress.
                 </div>
+                {raw.meta?.note && (
+                  <div className="mt-1.5 p-2 bg-amber-100/70 rounded border border-amber-200 text-xs font-mono text-amber-900">
+                    <strong>Status:</strong> {raw.meta.note}
+                  </div>
+                )}
                 <div className="text-[11px] text-amber-700 mt-1">
-                  To stream dynamic real-time telemetry, add a valid <code>LIVE_API_KEY</code> in your <code>Backend/.env</code> file.
+                  To stream dynamic real-time telemetry, add <code>LIVE_API_KEY=...</code> or <code>RAILRADAR_API_KEY=...</code> in your <code>Backend/.env</code> file.
                 </div>
               </div>
             </div>

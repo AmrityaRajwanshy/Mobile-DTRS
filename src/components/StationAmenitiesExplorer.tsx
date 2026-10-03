@@ -199,6 +199,16 @@ export const StationAmenitiesExplorer: React.FC<StationAmenitiesExplorerProps> =
     }, 3500);
   };
 
+  const openGoogleMaps = (name?: string, stationName?: string, locationDetails?: string) => {
+    const searchTerms = [name, locationDetails, stationName ? `${stationName} Railway Station` : '']
+      .filter(Boolean)
+      .join(', ');
+    const url = searchTerms
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchTerms)}`
+      : 'https://www.google.com/maps';
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   // Estimated delay from prediction
   const netDelayMins = predictionResult ? Math.round(predictionResult.math_resolution.NetDelay) : 21;
   const isDelayed = netDelayMins > 0;
@@ -573,6 +583,15 @@ export const StationAmenitiesExplorer: React.FC<StationAmenitiesExplorerProps> =
                       )}
                       <button
                         type="button"
+                        onClick={() => openGoogleMaps(item.name, item.stationName, item.locationDetails)}
+                        className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-900 border border-slate-700 flex items-center gap-1 transition-all active:scale-95 cursor-pointer shadow-xs"
+                        title="View on Google Maps"
+                      >
+                        <Navigation className="w-3 h-3" />
+                        <span>Map</span>
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => setSelectedFacilityModal(item)}
                         className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-irctc-blue hover:bg-irctc-blue-dark flex items-center gap-1 transition-all active:scale-95 shadow-xs cursor-pointer"
                       >
@@ -705,12 +724,9 @@ export const StationAmenitiesExplorer: React.FC<StationAmenitiesExplorerProps> =
                 )}
                 <button
                   type="button"
-                  onClick={() => {
-                    setActionNotice(`Walking directions to ${selectedFacilityModal.name} mapped.`);
-                    setSelectedFacilityModal(null);
-                    setTimeout(() => setActionNotice(null), 3000);
-                  }}
-                  className="bg-slate-800 hover:bg-slate-900 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition-all active:scale-95"
+                  onClick={() => openGoogleMaps(selectedFacilityModal.name, selectedFacilityModal.stationName, selectedFacilityModal.locationDetails)}
+                  className="bg-slate-800 hover:bg-slate-900 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer"
+                  title="View on Google Maps"
                 >
                   <Navigation className="w-3.5 h-3.5" />
                   Map

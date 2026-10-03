@@ -5,7 +5,30 @@ import { StationAmenityItem } from '@/types';
 export const CURATED_STATION_AMENITIES: Record<string, StationAmenityItem[]> = {
   // New Delhi Junction
   NDLS: [
-    
+    /*
+    {
+      id: 'ndls-lounge-1',
+      name: 'IRCTC Executive Lounge (Paharganj Side)',
+      category: 'executive_lounge',
+      subCategoryTitle: 'Railway Executive Lounge',
+      stationCode: 'NDLS',
+      stationName: 'New Delhi',
+      isJunction: true,
+      locationDetails: 'Platform 16 (Ajmeri Gate) & Platform 1 (Paharganj Gate)',
+      distanceFromStation: 'Inside Station Concourse',
+      walkTimeMins: 0,
+      pricing: '₹150 for 2 Hours Access',
+      hourlyRate: '₹150 / 2h (Includes Wi-Fi & Welcome Drink)',
+      rating: 4.6,
+      reviewCount: 4280,
+      isOpen24x7: true,
+      features: ['Central AC', 'Reclining Sofas', 'Shower Facility & Bath Kit', 'High-Speed Wi-Fi', 'Hot Buffet Meal Counter', 'Flight/Train Status Displays'],
+      contactPhone: '011-23342080',
+      bookingStatus: 'Available',
+      verifiedBadge: 'Official IRCTC Verified',
+      delayFit: 'Ideal for 1-3 hr train delay fresh up & laptop recharge'
+    },
+    */
     {
       id: 'ndls-retiring-1',
       name: 'Railway Retiring Rooms & Pod Dorms',

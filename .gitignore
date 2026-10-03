@@ -31,12 +31,16 @@ SPipelines/
 **/BlackSheep/
 BlackSheep2 - FRTD/
 *.json
-!**/Frontend/package.json
-!**/Frontend/package-lock.json
-!**/Frontend/tsconfig.json
-!**/Frontend/components.json
-!**/Frontend/vercel.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
 !vercel.json
+!**/package.json
+!**/package-lock.json
+!**/tsconfig.json
+!**/components.json
+!**/vercel.json
 
 # Simulation runtime database changes (baseline WIN.db kept)
 WIN_SIMULATION.db

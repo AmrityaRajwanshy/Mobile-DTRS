@@ -1,0 +1,48 @@
+# Node & Next.js
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+.vercel/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+.venv/
+venv/
+ENV/
+*.log
+
+# Environment variables & secrets
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Embedded snapshot sub-repos / archive
+SPipelines/
+**/SPipelines/
+**/BlackSheep/
+BlackSheep2 - FRTD/
+*.json
+!**/Frontend/package.json
+!**/Frontend/package-lock.json
+!**/Frontend/tsconfig.json
+!**/Frontend/components.json
+!**/Frontend/vercel.json
+
+# Simulation runtime database changes (baseline WIN.db kept)
+WIN_SIMULATION.db
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/
